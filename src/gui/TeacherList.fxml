@@ -30,7 +30,7 @@
           <TableColumn fx:id="tableColumnName" prefWidth="75.0" text="Name" />
           <TableColumn fx:id="tableColumnCpf" prefWidth="75.0" text="CPF" />
             <TableColumn fx:id="tableColumnPhone" prefWidth="75.0" text="Phone" />
-            <TableColumn fx:id="tableColumnAdmisionDate" prefWidth="75.0" text="AdmissionDate" />
+            <TableColumn fx:id="tableColumnAdmissionDate" prefWidth="75.0" text="AdmissionDate" />
             <TableColumn fx:id="tableColumnSalary" prefWidth="75.0" text="Salary" />
             <TableColumn fx:id="tableColumnChief" prefWidth="75.0" text="Chief" />
             <TableColumn fx:id="tableColumnCoordinator" prefWidth="75.0" text="Coordinator" />
