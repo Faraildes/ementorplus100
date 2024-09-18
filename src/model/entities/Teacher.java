@@ -4,15 +4,15 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
-public class Teacher implements Serializable {
-
+public class Teacher implements Serializable{	
+	
 	private static final long serialVersionUID = 1L;
-
+	
 	private Integer id;
-	private String name;
+	private String name;	
 	private String cpf;
 	private String phone;
-	private Date date;
+	private Date admissionDate;
 	private Double salary;
 	private String chief;
 	private String coordinator;
@@ -20,13 +20,13 @@ public class Teacher implements Serializable {
 	public Teacher() {
 	}
 
-	public Teacher(Integer id, String name, String cpf, String phone, Date date, Double salary, String chief,
+	public Teacher(Integer id, String name, String cpf, String phone, Date admissionDate, Double salary, String chief,
 			String coordinator) {
 		this.id = id;
 		this.name = name;
 		this.cpf = cpf;
 		this.phone = phone;
-		this.date = date;
+		this.admissionDate = admissionDate;
 		this.salary = salary;
 		this.chief = chief;
 		this.coordinator = coordinator;
@@ -64,12 +64,12 @@ public class Teacher implements Serializable {
 		this.phone = phone;
 	}
 
-	public Date getDate() {
-		return date;
+	public Date getAdmissionDate() {
+		return admissionDate;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setAdmissionDate(Date admissionDate) {
+		this.admissionDate = admissionDate;
 	}
 
 	public Double getSalary() {
@@ -119,7 +119,7 @@ public class Teacher implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Teacher [id=" + id + ", name=" + name + ", cpf=" + cpf + ", phone=" + phone + ", date=" + date
-				+ ", salary=" + salary + ", chief=" + chief + ", coordinator=" + coordinator + "]";
+		return "Teacher [id=" + id + ", name=" + name + ", cpf=" + cpf + ", phone=" + phone + ", admissionDate="
+				+ admissionDate + ", salary=" + salary + ", chief=" + chief + ", coordinator=" + coordinator + "]";
 	}	
-}
+}	
