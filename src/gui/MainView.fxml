@@ -6,8 +6,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MainViewController">
    <content>
       <VBox prefHeight="292.0" prefWidth="567.0">
          <children>
@@ -15,15 +14,15 @@
               <menus>
                 <Menu mnemonicParsing="false" text="Registration">
                   <items>
-                        <MenuItem mnemonicParsing="false" text="Student" />
-                        <MenuItem mnemonicParsing="false" text="Teacher" />
-                        <MenuItem mnemonicParsing="false" text="Turma" />
-                        <MenuItem mnemonicParsing="false" text="Users" />
+                        <MenuItem fx:id="menuItemStudent" mnemonicParsing="false" onAction="#onMenuItemStudentAction" text="Student" />
+                        <MenuItem fx:id="menuItemTeacher" mnemonicParsing="false" onAction="#onMenuItemTeacherAction" text="Teacher" />
+                        <MenuItem fx:id="menuItemTurma" mnemonicParsing="false" onAction="#onMenuItemTurmaAction" text="Turma" />
+                        <MenuItem fx:id="menuItemUsers" mnemonicParsing="false" onAction="#onMenuItemUsersAction" text="Users" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="About" />
+                    <MenuItem fx:id="menuItemAbout" mnemonicParsing="false" onAction="#onMenuItemAboutAction" text="About" />
                   </items>
                 </Menu>
               </menus>
