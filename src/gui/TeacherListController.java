@@ -15,7 +15,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -68,7 +67,8 @@ public class TeacherListController implements Initializable {
 	@FXML
 	public void onBtNewAction(ActionEvent event) {
 		Stage parentStage = Utils.currentStage(event);
-		createDialogForm("/gui/TeacherForm.fxml", parentStage);
+		Teacher obj = new Teacher();
+		createDialogForm(obj, "/gui/TeacherForm.fxml", parentStage);
 	}
 	
 	public void setTeacherService(TeacherService service) {
@@ -103,11 +103,14 @@ public class TeacherListController implements Initializable {
 		tableViewTeacher.setItems(obsList);
 	}
 	
-	private void createDialogForm(String absoluteName, Stage parentStage) {
+	private void createDialogForm(Teacher obj, String absoluteName, Stage parentStage) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(absoluteName));
 			Pane pane = loader.load(); 
 			
+			TeacherFormController controller = loader.getController();
+			controller.setTeacher(obj);						
+			controller.updateFormData();
 			
 			Stage dialogStage = new Stage();
 			dialogStage.setTitle("Enter Teacher data");
@@ -116,7 +119,8 @@ public class TeacherListController implements Initializable {
 			dialogStage.initOwner(parentStage);
 			dialogStage.initModality(Modality.WINDOW_MODAL);
 			dialogStage.showAndWait();
-		}
+			
+			}
 		catch (IOException e) {
 			Alerts.showAlert("IO Exception", "Eror loading view", e.getMessage(), AlertType.ERROR);
 		}
