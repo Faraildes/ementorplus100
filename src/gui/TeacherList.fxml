@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox prefHeight="314.0" prefWidth="682.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/22">
+<VBox prefHeight="315.0" prefWidth="768.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.TeacherListController">
    <children>
       <Label text="Teacher Registration">
          <font>
@@ -22,19 +21,19 @@
       </Label>
       <ToolBar prefHeight="40.0" prefWidth="200.0">
         <items>
-          <Button mnemonicParsing="false" text="New" />
+          <Button fx:id="btNew" mnemonicParsing="false" onAction="#onBtNewAction" text="New" />
         </items>
       </ToolBar>
-      <TableView prefHeight="200.0" prefWidth="200.0">
+      <TableView fx:id="tableViewTeacher" prefHeight="200.0" prefWidth="200.0">
         <columns>
-            <TableColumn prefWidth="75.0" text="Id" />
-          <TableColumn prefWidth="75.0" text="Name" />
-          <TableColumn prefWidth="75.0" text="CPF" />
-            <TableColumn prefWidth="75.0" text="Phone" />
-            <TableColumn prefWidth="75.0" text="AdmissionDate" />
-            <TableColumn prefWidth="75.0" text="Salary" />
-            <TableColumn prefWidth="75.0" text="Chief" />
-            <TableColumn prefWidth="75.0" text="Coordinator" />
+            <TableColumn fx:id="tableColumnId" prefWidth="75.0" text="Id" />
+          <TableColumn fx:id="tableColumnName" prefWidth="75.0" text="Name" />
+          <TableColumn fx:id="tableColumnCpf" prefWidth="75.0" text="CPF" />
+            <TableColumn fx:id="tableColumnPhone" prefWidth="75.0" text="Phone" />
+            <TableColumn fx:id="tableColumnAdmisionDate" prefWidth="75.0" text="AdmissionDate" />
+            <TableColumn fx:id="tableColumnSalary" prefWidth="75.0" text="Salary" />
+            <TableColumn fx:id="tableColumnChief" prefWidth="75.0" text="Chief" />
+            <TableColumn fx:id="tableColumnCoordinator" prefWidth="75.0" text="Coordinator" />
         </columns>
       </TableView>
    </children>
