@@ -45,14 +45,14 @@
             <DatePicker fx:id="dpAdmissionDate" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <TextField fx:id="txtSalary" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <TextField fx:id="txtChief" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Label fx:id="labelErrorName" textFill="#e70606" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Label fx:id="labelErrorCpf" textFill="#f40808" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Label fx:id="labelErrorPhone" textFill="#ea0202" GridPane.columnIndex="2" GridPane.rowIndex="3" />
             <TextField fx:id="txtCoordinator" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-            <Label fx:id="labelName" textFill="#e70606" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Label fx:id="labelCpf" textFill="#f40808" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Label fx:id="labelPhone" textFill="#ea0202" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <Label fx:id="labelAdmissionDate" textFill="#ec0303" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <Label fx:id="labelSalary" textFill="#f70303" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-            <Label fx:id="labelChief" textFill="#ea0606" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-            <Label fx:id="labelCoordinator" textFill="#ec0303" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+            <Label fx:id="labelErrorAdmissionDate" textFill="#ec0303" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Label fx:id="labelErrorSalary" textFill="#f70303" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <Label fx:id="labelErrorChief" textFill="#ea0606" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+            <Label fx:id="labelErrorCoordinator" textFill="#ec0303" GridPane.columnIndex="2" GridPane.rowIndex="7" />
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="15.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
                <children>
                   <Button fx:id="btSabe" mnemonicParsing="false" onAction="#onBtSaveAction" text="Save" />

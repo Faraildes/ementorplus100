@@ -8,7 +8,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 import db.DbException;
 import gui.listeners.DataChangeListener;
@@ -24,6 +26,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import model.entities.Teacher;
+import model.exception.ValidationException;
 import model.services.TeacherService;
 
 public class TeacherFormController implements Initializable{
@@ -60,25 +63,25 @@ public class TeacherFormController implements Initializable{
 	
 	
 	@FXML 
-	private Label labelName;
+	private Label labelErrorName;
 	
 	@FXML 
-	private Label labelCpf;
+	private Label labelErrorCpf;
 	
 	@FXML 
-	private Label labelPhone;
+	private Label labelErrorPhone;
 	
 	@FXML 
-	private Label labelAdmissionDate;
+	private Label labelErrorAdmissionDate;
 	
 	@FXML 
-	private Label labelSalary;
+	private Label labelErrorSalary;
 	
 	@FXML 
-	private Label labelChief;
+	private Label labelErrorChief;
 	
 	@FXML 
-	private Label labelCoordinator;
+	private Label labelErrorCoordinator;
 	
 	@FXML
 	private Button btSabe;
@@ -110,6 +113,9 @@ public class TeacherFormController implements Initializable{
 			notifyDataChangeListeners();
 			Utils.currentStage(event).close();
 		}
+		catch (ValidationException e) {
+			setErrorMessage(e.getErrors());
+		}
 		catch (DbException e) {
 			Alerts.showAlert("Errror saving object", null, e.getMessage(), AlertType.ERROR);
 		}
@@ -124,15 +130,41 @@ public class TeacherFormController implements Initializable{
 	private Teacher getFormData() {
 		Teacher obj = new Teacher();
 		
+		ValidationException exception = new ValidationException("Validation error");
+				
 		obj.setId(Utils.tryParseToInt(txtId.getText()));
+		
+		if (txtName.getText() == null || txtName.getText().trim().equals(""))
+			exception.addError("name", "Field can't be empty");
 		obj.setName(txtName.getText());
+		
+		if(txtCpf.getText() == null || txtCpf.getText().trim().equals(""))
+			exception.addError("cpf", "Field cant't be empty");			
 		obj.setCpf(txtCpf.getText());
+		
+		if(txtPhone.getText() == null || txtPhone.getText().trim().equals(""))
+			exception.addError("phone", "Field can't be empty");
 		obj.setPhone(txtPhone.getText());
-		Instant instant = Instant.from(dpAdmissionDate.getValue().atStartOfDay(ZoneId.systemDefault()));
+		
+		if(dpAdmissionDate.getValue() == null)
+			exception.addError("admissionDate", "Field can't be empty");
+		Instant instant = Instant.from(dpAdmissionDate.getValue().atStartOfDay(ZoneId.systemDefault()));		
 		obj.setAdmissionDate(Date.from(instant));
+		
+		if(txtSalary.getText() == null || txtSalary.getText().trim().equals(""))
+			exception.addError("salary", "Field can't be empty");
 		obj.setSalary(Utils.tryParseToDouble(txtSalary.getText()));
+		
+		if(txtChief.getText() == null || txtSalary.getText().trim().equals(""))
+			exception.addError("chief", "Field can't be empty");
 		obj.setChief(txtChief.getText());
+		
+		if(txtCoordinator.getText() == null || txtCoordinator.getText().trim().equals(""))
+			exception.addError("coordinator", "Field can't be empty");
 		obj.setCoordinator(txtCoordinator.getText());
+				
+		if(exception.getErrors().size() > 0)
+			throw exception;
 		
 		return obj;
 	}
@@ -163,8 +195,31 @@ public class TeacherFormController implements Initializable{
 		Locale.setDefault(Locale.US);
 		txtSalary.setText(String.valueOf(entity.getSalary()));
 		txtChief.setText(entity.getChief());
-		txtCoordinator.setText(entity.getCoordinator());
-		
+		txtCoordinator.setText(entity.getCoordinator());		
 	}
-
+	
+	private void setErrorMessage(Map<String, String> errors) {
+		Set<String> fields = errors.keySet();
+		
+		if (fields.contains("name"))
+			labelErrorName.setText(errors.get("name"));
+		
+		if(fields.contains("cpf"))
+			labelErrorCpf.setText(errors.get("cpf"));
+		
+		if(fields.contains("cpf"))
+			labelErrorPhone.setText(errors.get("cpf"));
+		
+		if(fields.contains("cpf"))
+			labelErrorAdmissionDate.setText(errors.get("admissionDate"));
+		
+		if(fields.contains("cpf"))
+			labelErrorSalary.setText(errors.get("salary"));
+		
+		if(fields.contains("cpf"))
+			labelErrorChief.setText(errors.get("chief"));
+		
+		if(fields.contains("cpf"))
+			labelErrorCoordinator.setText(errors.get("coordinator"));
+	}
 }
