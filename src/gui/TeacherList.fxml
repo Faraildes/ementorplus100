@@ -35,7 +35,7 @@
             <TableColumn fx:id="tableColumnChief" prefWidth="75.0" text="Chief" />
             <TableColumn fx:id="tableColumnCoordinator" prefWidth="75.0" text="Coordinator" />
             <TableColumn fx:id="tableColumnEDIT" prefWidth="75.0" />
-            <TableColumn prefWidth="75.0" />
+            <TableColumn fx:id="tableColumnREMOVE" prefWidth="75.0" />
         </columns>
       </TableView>
    </children>
