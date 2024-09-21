@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -53,6 +54,7 @@
             <Label fx:id="labelErrorCpf" textFill="#e40909" GridPane.columnIndex="2" GridPane.rowIndex="3" />
             <Label fx:id="labelErrorPhone" textFill="#e40303" GridPane.columnIndex="2" GridPane.rowIndex="4" />
             <Label fx:id="labelErrorPeriod" textFill="#ef0505" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <ComboBox fx:id="comboBoxTurma" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
          </children>
       </GridPane>
    </children>

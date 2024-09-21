@@ -32,6 +32,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.entities.Student;
 import model.services.StudentService;
+import model.services.TurmaService;
 
 public class StudentListController implements Initializable, DataChangeListener {
 
@@ -117,7 +118,8 @@ public class StudentListController implements Initializable, DataChangeListener 
 
 			StudentFormController controller = loader.getController();
 			controller.setStudent(obj);
-			controller.setStudentService(new StudentService());
+			controller.setServices(new StudentService(), new TurmaService());
+			controller.loadAssociatedObjects();
 			controller.subscribeDataChangeListener(this);
 			controller.updateFormData();
 
