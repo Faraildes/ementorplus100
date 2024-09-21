@@ -1,5 +1,6 @@
 package gui.util;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -21,8 +22,7 @@ public class Utils {
 	public static Integer tryParseToInt(String str) {
 		try {
 			return Integer.parseInt(str);
-		} 
-		catch (NumberFormatException e) {
+		} catch (NumberFormatException e) {
 			return null;
 		}
 	}
@@ -30,13 +30,12 @@ public class Utils {
 	public static Double tryParseToDouble(String str) {
 		try {
 			return Double.parseDouble(str);
-		} 
-		catch (NumberFormatException e) {
+		} catch (NumberFormatException e) {
 			return null;
 		}
 	}
-	
-	/*public static <T> void formatTableColumnDate(TableColumn<T, Date> tableColumn, String format) {
+
+	public static <T> void formatTableColumnDate(TableColumn<T, Date> tableColumn, String format) {
 		tableColumn.setCellFactory(column -> {
 			TableCell<T, Date> cell = new TableCell<T, Date>() {
 				private SimpleDateFormat sdf = new SimpleDateFormat(format);
@@ -53,7 +52,7 @@ public class Utils {
 			};
 			return cell;
 		});
-	}*/
+	}
 
 	public static <T> void formatTableColumnDouble(TableColumn<T, Double> tableColumn, int decimalPlaces) {
 		tableColumn.setCellFactory(column -> {

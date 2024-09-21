@@ -97,7 +97,9 @@ public class TeacherListController implements Initializable, DataChangeListener 
 		tableColumnCpf.setCellValueFactory(new PropertyValueFactory<>("cpf"));
 		tableColumnPhone.setCellValueFactory(new PropertyValueFactory<>("phone"));
 		tableColumnAdmissionDate.setCellValueFactory(new PropertyValueFactory<>("admissionDate"));
+		Utils.formatTableColumnDate(tableColumnAdmissionDate, "dd/MM/yyyy");
 		tableColumnSalary.setCellValueFactory(new PropertyValueFactory<>("salary"));
+		Utils.formatTableColumnDouble(tableColumnSalary, 2);
 		tableColumnChief.setCellValueFactory(new PropertyValueFactory<>("chief"));
 		tableColumnCoordinator.setCellValueFactory(new PropertyValueFactory<>("coordinator"));
 

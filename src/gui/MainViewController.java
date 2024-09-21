@@ -17,6 +17,8 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import model.services.TeacherService;
+import model.services.TurmaService;
+
 
 public class MainViewController implements Initializable {
 
@@ -50,7 +52,10 @@ public class MainViewController implements Initializable {
 	
 	@FXML
 	public void onMenuItemTurmaAction() {
-		System.out.println("onMenuItemTurmaAction");
+		loadView("/gui/TurmaList.fxml", (TurmaListController controller) -> {
+			controller.setTurmaService(new TurmaService());
+			controller.updateTableView();
+		});
 	}
 	
 	@FXML

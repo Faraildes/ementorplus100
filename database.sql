@@ -9,6 +9,13 @@ CREATE TABLE teacher (
   Coordinator varchar(3) NOT NULL,
   PRIMARY KEY (Id)
   );
+  
+  CREATE TABLE Turma (
+  Id int(11) NOT NULL AUTO_INCREMENT,
+  Name varchar(60) NOT NULL,    
+  Notas double NOT NULL,    
+  PRIMARY KEY (Id)
+  );
 
 CREATE TABLE student (
   Id int(11) NOT NULL AUTO_INCREMENT,
@@ -24,6 +31,11 @@ INSERT INTO teacher(Name, Cpf, Phone, AdmissionDate, Salary, Chief, Coordinator)
 	('Francisco', '25468974521', '985674528', '2002-12-12', 12000.00, 'nao', 'nao'),
 	('Oberlan',  '25467821321', '97856421', '2003-02-21', 10000.00, 'nao', 'nao'),
 	('Maria', '32565487231', '978564212', '1995-11-21', 15000.00, 'nao', 'nao');
+    
+INSERT INTO turma(Name, Notas) VALUES
+	('POO', 6.75),
+    ('POI', 8.86),
+    ('Eng.Software', 8.70);
 
 INSERT INTO student (Name, BirthDate, Cpf, Phone, Period) VALUES 
   ('Bob Brown', '1998-04-21 00:00:00', '15687945329', '986534726', 2),
