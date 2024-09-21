@@ -1,6 +1,7 @@
 package gui;
 
 import java.net.URL;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -39,7 +40,19 @@ public class StudentListController implements Initializable, DataChangeListener 
 
 	@FXML
 	private TableColumn<Student, String> tableColumnName;
-
+	
+	@FXML
+	private TableColumn<Student, Date> tableColumnBirthDate;
+	
+	@FXML
+	private TableColumn<Student, String> tableColumnCpf;
+	
+	@FXML
+	private TableColumn<Student, String> tableColumnPhone;
+	
+	@FXML
+	private TableColumn<Student, Integer> tableColumnPeriod;
+		
 	@FXML
 	private TableColumn<Student, Student> tableColumnEDIT;
 
@@ -70,6 +83,12 @@ public class StudentListController implements Initializable, DataChangeListener 
 	private void initializeNodes() {
 		tableColumnId.setCellValueFactory(new PropertyValueFactory<>("id"));
 		tableColumnName.setCellValueFactory(new PropertyValueFactory<>("name"));
+		tableColumnBirthDate.setCellValueFactory(new PropertyValueFactory<>("birthDate"));
+		Utils.formatTableColumnDate(tableColumnBirthDate, "dd/MM/yyyy");
+		tableColumnCpf.setCellValueFactory(new PropertyValueFactory<>("cpf"));
+		tableColumnPhone.setCellValueFactory(new PropertyValueFactory<>("phone"));
+		tableColumnPeriod.setCellValueFactory(new PropertyValueFactory<>("period"));
+		//Utils.tryParseToInt(tableColumnPeriod);
 
 		Stage stage = (Stage) Main.getMainScene().getWindow();
 		tableViewStudent.prefHeightProperty().bind(stage.heightProperty());

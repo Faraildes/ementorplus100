@@ -36,9 +36,10 @@ public class StudentDaoJDBC implements StudentDao {
 					Statement.RETURN_GENERATED_KEYS);
 			
 			st.setString(1, obj.getName());
-			st.setString(2, obj.getEmail());
-			st.setDate(3, new java.sql.Date(obj.getBirthDate().getTime()));
-			st.setDouble(4, obj.getBaseSalary());
+			st.setDate(2, new java.sql.Date(obj.getBirthDate().getTime()));
+			st.setString(3, obj.getCpf());
+			st.setString(4, obj.getPhone());
+			st.setInt(5, obj.getPeriod());
 			st.setInt(5, obj.getTurma().getId());
 			
 			int rowsAffected = st.executeUpdate();
@@ -69,13 +70,14 @@ public class StudentDaoJDBC implements StudentDao {
 		try {
 			st = conn.prepareStatement(
 					"UPDATE student "
-					+ "SET Name = ?, Email = ?, BirthDate = ?, BaseSalary = ?, TurmaId = ? "
+					+ "SET Name = ?, BirthDate = ?, Cpf = ?, Phone = ?. Period = ?, TurmaId = ? "
 					+ "WHERE Id = ?");
 			
-			st.setString(1, obj.getName());
-			st.setString(2, obj.getEmail());
-			st.setDate(3, new java.sql.Date(obj.getBirthDate().getTime()));
-			st.setDouble(4, obj.getBaseSalary());
+			st.setString(1, obj.getName());			
+			st.setDate(2, new java.sql.Date(obj.getBirthDate().getTime()));	
+			st.setString(3, obj.getCpf());
+			st.setString(1, obj.getPhone());
+			st.setInt(1, obj.getPeriod());
 			st.setInt(5, obj.getTurma().getId());
 			st.setInt(6, obj.getId());
 			
@@ -139,10 +141,11 @@ public class StudentDaoJDBC implements StudentDao {
 	private Student instantiateStudent(ResultSet rs, Turma tur) throws SQLException {
 		Student obj = new Student();
 		obj.setId(rs.getInt("Id"));
-		obj.setName(rs.getString("Name"));
-		obj.setEmail(rs.getString("Email"));
-		obj.setBaseSalary(rs.getDouble("BaseSalary"));
+		obj.setName(rs.getString("Name"));	
 		obj.setBirthDate(new java.util.Date(rs.getTimestamp("BirthDate").getTime()));
+		obj.setCpf(rs.getString("Cpf"));
+		obj.setPhone(rs.getString("Phone"));
+		obj.setPeriod(rs.getInt("Period"));
 		obj.setTurma(tur);
 		return obj;
 	}
