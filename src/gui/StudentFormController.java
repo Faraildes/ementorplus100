@@ -1,6 +1,8 @@
 package gui;
 
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +19,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import model.entities.Student;
@@ -38,7 +41,31 @@ public class StudentFormController implements Initializable {
 	private TextField txtName;
 	
 	@FXML
+	private DatePicker dpBirthDate;	
+	
+	@FXML
+	private TextField txtCpf;
+	
+	@FXML
+	private TextField txtPhone;
+	
+	@FXML
+	private TextField txtPeriod;
+		
+	@FXML
 	private Label labelErrorName;
+	
+	@FXML
+	private Label labelErrorBirthDate;
+	
+	@FXML
+	private Label labelErrorCpf;
+	
+	@FXML
+	private Label labelErrorPhone;
+	
+	@FXML
+	private Label labelErrorPeriod;
 	
 	@FXML
 	private Button btSave;
@@ -117,7 +144,11 @@ public class StudentFormController implements Initializable {
 	
 	private void initializeNodes() {
 		Constraints.setTextFieldInteger(txtId);
-		Constraints.setTextFieldMaxLength(txtName, 30);
+		Constraints.setTextFieldMaxLength(txtName, 60);
+		Constraints.setTextFieldMaxLength(txtCpf, 12);
+		Constraints.setTextFieldInteger(txtPeriod);
+		Constraints.setTextFieldMaxLength(txtPhone, 15);
+		Utils.formatDatePicker(dpBirthDate, "dd/MM/yyyy");				
 	}
 	
 	public void updateFormData() {
@@ -126,6 +157,11 @@ public class StudentFormController implements Initializable {
 		}
 		txtId.setText(String.valueOf(entity.getId()));
 		txtName.setText(entity.getName());
+		if (entity.getBirthDate() != null)
+			dpBirthDate.setValue(LocalDate.ofInstant(entity.getBirthDate().toInstant(), ZoneId.systemDefault()));
+		txtCpf.setText(entity.getCpf());
+		txtPhone.setText(entity.getPhone());
+		txtPeriod.setText(String.format("%d", entity.getPeriod()));
 	}
 	
 	private void setErrorMessages(Map<String, String> errors) {
