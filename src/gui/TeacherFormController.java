@@ -81,7 +81,7 @@ public class TeacherFormController implements Initializable{
 	private Label labelErrorChief;
 	
 	@FXML 
-	private Label labelErrorCoordinator;
+	private Label labelErrorCoordinador;
 	
 	@FXML
 	private Button btSabe;
@@ -146,10 +146,13 @@ public class TeacherFormController implements Initializable{
 			exception.addError("phone", "Field can't be empty");
 		obj.setPhone(txtPhone.getText());
 		
-		if(dpAdmissionDate.getValue() == null)
+		if(dpAdmissionDate.getValue() == null) {
 			exception.addError("admissionDate", "Field can't be empty");
-		Instant instant = Instant.from(dpAdmissionDate.getValue().atStartOfDay(ZoneId.systemDefault()));		
-		obj.setAdmissionDate(Date.from(instant));
+		}
+		else {
+			Instant instant = Instant.from(dpAdmissionDate.getValue().atStartOfDay(ZoneId.systemDefault()));		
+			obj.setAdmissionDate(Date.from(instant));
+		}
 		
 		if(txtSalary.getText() == null || txtSalary.getText().trim().equals(""))
 			exception.addError("salary", "Field can't be empty");
@@ -201,25 +204,13 @@ public class TeacherFormController implements Initializable{
 	private void setErrorMessage(Map<String, String> errors) {
 		Set<String> fields = errors.keySet();
 		
-		if (fields.contains("name"))
-			labelErrorName.setText(errors.get("name"));
+		labelErrorName.setText(fields.contains("name") ? errors.get("name") : "");
+		labelErrorCpf.setText(fields.contains("cpf") ? errors.get("cpf") : "");
+		labelErrorPhone.setText(fields.contains("phone") ? errors.get("phone") : "");
+		labelErrorAdmissionDate.setText(fields.contains("admissionDate") ? errors.get("admissionDate") : "");
+		labelErrorSalary.setText(fields.contains("salary") ? errors.get("salary") : "");
+		labelErrorChief.setText(fields.contains("chief") ? errors.get("chief") : "");
+		labelErrorCoordinador.setText(fields.contains("coordinador") ? errors.get("coordinador") : "");
 		
-		if(fields.contains("cpf"))
-			labelErrorCpf.setText(errors.get("cpf"));
-		
-		if(fields.contains("cpf"))
-			labelErrorPhone.setText(errors.get("cpf"));
-		
-		if(fields.contains("cpf"))
-			labelErrorAdmissionDate.setText(errors.get("admissionDate"));
-		
-		if(fields.contains("cpf"))
-			labelErrorSalary.setText(errors.get("salary"));
-		
-		if(fields.contains("cpf"))
-			labelErrorChief.setText(errors.get("chief"));
-		
-		if(fields.contains("cpf"))
-			labelErrorCoordinator.setText(errors.get("coordinator"));
-	}
+		}
 }

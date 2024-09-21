@@ -2,31 +2,30 @@ package model.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Objects;
 
 public class Student implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
-	
+
 	private Integer id;
 	private String name;
+	private String email;
 	private Date birthDate;
-	private String cpf;
-	private String phone;
-	private String period;
-		
-	public Student() {	
+	private Double baseSalary;
+	
+	private Turma turma;
+	
+	public Student() {
 	}
-		
-	public Student(Integer id, String name, Date birthDate, String cpf, String phone, String period) {
+
+	public Student(Integer id, String name, String email, Date birthDate, Double baseSalary, Turma turma) {
 		this.id = id;
 		this.name = name;
+		this.email = email;
 		this.birthDate = birthDate;
-		this.cpf = cpf;
-		this.phone = phone;
-		this.period = period;
+		this.baseSalary = baseSalary;
+		this.turma = turma;
 	}
-	
 
 	public Integer getId() {
 		return id;
@@ -44,6 +43,14 @@ public class Student implements Serializable {
 		this.name = name;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public Date getBirthDate() {
 		return birthDate;
 	}
@@ -52,37 +59,28 @@ public class Student implements Serializable {
 		this.birthDate = birthDate;
 	}
 
-	public String getCpf() {
-		return cpf;
+	public Double getBaseSalary() {
+		return baseSalary;
 	}
 
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
+	public void setBaseSalary(Double baseSalary) {
+		this.baseSalary = baseSalary;
 	}
 
-	public String getPhone() {
-		return phone;
+	public Turma getTurma() {
+		return turma;
 	}
 
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-
-	public String getPeriod() {
-		return period;
-	}
-
-	public void setPeriod(String period) {
-		this.period = period;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public void setTurma(Turma turma) {
+		this.turma = turma;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
 	}
 
 	@Override
@@ -94,12 +92,17 @@ public class Student implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Student other = (Student) obj;
-		return Objects.equals(id, other.id);
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Student [id=" + id + ", name=" + name + ", birthDate=" + birthDate + ", cpf=" + cpf + ", phone=" + phone
-				+ ", period=" + period + "]";
-	}		
+		return "Student [id=" + id + ", name=" + name + ", email=" + email + ", birthDate=" + birthDate + ", baseSalary="
+				+ baseSalary + ", turma=" + turma + "]";
+	}
 }

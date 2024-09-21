@@ -16,6 +16,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
+import model.services.StudentService;
 import model.services.TeacherService;
 import model.services.TurmaService;
 
@@ -39,7 +40,11 @@ public class MainViewController implements Initializable {
 	
 	@FXML
 	public void onMenuItemStudentAction() {
-		System.out.println("onMenuItemStudentAction");
+		loadView("/gui/StudentList.fxml", (StudentListController controller) -> {
+			controller.setStudentService(new StudentService());
+			controller.updateTableView();
+		});
+
 	}
 	
 	@FXML
